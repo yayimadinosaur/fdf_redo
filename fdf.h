@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/26 19:06:47 by wfung             #+#    #+#             */
-/*   Updated: 2017/05/29 18:24:38 by wfung            ###   ########.fr       */
+/*   Updated: 2017/06/03 17:21:04 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,12 @@ typedef struct				s_fdfstore
 	int					win_y;		//save max y axis of window
 	int					center_x;
 	int					center_y;
-	int					start_x;
-	int					start_y;
+	int					start_x;	//starts off 10% inside of x
+	int					start_y;	//starts off 10% inside of y
+	int					max_x;		//ends off 10% inside of x;		NOTSUREIF
+	int					max_y;		//ends off 10% inside of y;		NEEDED
+	int					h;			//height of each line
+	int					w;			//width of each line
 }							t_fdfstore;
 
 void	draw(void *mlx, void *win, t_fdfstore *grid);
