@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 17:03:56 by wfung             #+#    #+#             */
-/*   Updated: 2017/06/05 19:02:51 by wfung            ###   ########.fr       */
+/*   Updated: 2017/06/06 18:08:10 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,17 @@ void	draw(void *mlx, void *win, t_fdfstore *grid)
 
 	i = 0;
 	j = 0;
-	n = grid->start_x + grid->h * i;
-	p = grid->start_y + grid->w * j;
+//	n = grid->start_x + grid->h * i;
+//	p = grid->start_y + grid->w * j;
 	printf("grid value test col %i row %i win_x %i win_y %i center_x %i center_y %i start_x %i start_y %i max_x %i max_y %i h %i w %i\n", grid->col, grid->row, grid->win_x, grid->win_y, grid->center_x, grid->center_y, grid->start_x, grid->start_y, grid->max_x, grid->max_y, grid->h, grid->w);
 	while (i < grid->col)	//remember to print proper array	//old - while(grid->f_array[i]
 	{
 		j = 0;
 		while (j < grid->row)
 		{
+
+	n = grid->start_x + grid->h * i;
+	p = grid->start_y + grid->w * j;
 			m = ((j - (j + 1)) / (i - (i + 1))) * j + 1;	//NOT TEST?
 			printf("j = [%i] i = [%i] m = [%i] n = [%i] p = [%i]\n", j, i, m, n, p);
 			while (n < grid->start_x + grid->h * (i + 1))
@@ -41,7 +44,7 @@ void	draw(void *mlx, void *win, t_fdfstore *grid)
 			//	mlx_pixel_put(mlx, win, n * m + n, p * m + p, 0xffffff);	//white
 				n++;
 			}
-			n = grid->start_x + grid->h * i;
+//			n = grid->start_x + grid->h * i;
 			while (p < grid->start_x + grid->w * (j + 1))
 	//		while (p > grid->start_y + grid->start_y * (j - 1))
 			{
@@ -49,7 +52,7 @@ void	draw(void *mlx, void *win, t_fdfstore *grid)
 				p++;
 	//			p--;
 			}
-			p = grid->start_y + grid->w * j;
+//			p = grid->start_y + grid->w * j;
 			j++;
 		}
 		i++;
