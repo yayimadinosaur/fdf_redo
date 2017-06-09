@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 17:03:56 by wfung             #+#    #+#             */
-/*   Updated: 2017/06/06 18:08:10 by wfung            ###   ########.fr       */
+/*   Updated: 2017/06/08 20:27:51 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	draw(void *mlx, void *win, t_fdfstore *grid)
 		j = 0;
 		while (j < grid->row)
 		{
-
 	n = grid->start_x + grid->h * i;
 	p = grid->start_y + grid->w * j;
 			m = ((j - (j + 1)) / (i - (i + 1))) * j + 1;	//NOT TEST?
@@ -44,7 +43,9 @@ void	draw(void *mlx, void *win, t_fdfstore *grid)
 			//	mlx_pixel_put(mlx, win, n * m + n, p * m + p, 0xffffff);	//white
 				n++;
 			}
-//			n = grid->start_x + grid->h * i;
+			n = grid->start_x + grid->h * i;
+			if (n == grid->max_x || p == grid->max_y)
+				break;
 			while (p < grid->start_x + grid->w * (j + 1))
 	//		while (p > grid->start_y + grid->start_y * (j - 1))
 			{
@@ -57,7 +58,7 @@ void	draw(void *mlx, void *win, t_fdfstore *grid)
 		}
 		i++;
 	}
-	printf("fin draw ft\n");
+	printf("fin draw ft j = [%i] i = [%i] n = [%i] p = [%i]\n", j, i, n, p);
 }
 
 int		mouse_hook(int button, int x, int y, t_env *e)
@@ -94,8 +95,8 @@ void	set_window(int n, t_fdfstore *grid)
 	grid->start_y =  n / 10;
 	grid->max_x = n - (n / 10);
 	grid->max_y = n - (n / 10);
-	grid->h = (n - (grid->start_x * 2)) / grid->col;
-	grid->w = (n - (grid->start_x * 2)) / grid->row;
+	grid->h = (n - (grid->start_x * 2)) / (grid->col - 1);
+	grid->w = (n - (grid->start_x * 2)) / (grid->row - 1);
 }
 
 int		main(int ac, char **av)
