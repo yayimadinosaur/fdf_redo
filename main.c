@@ -6,7 +6,7 @@
 /*   By: wfung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 17:03:56 by wfung             #+#    #+#             */
-/*   Updated: 2017/06/08 20:27:51 by wfung            ###   ########.fr       */
+/*   Updated: 2017/06/12 14:08:23 by wfung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	draw(void *mlx, void *win, t_fdfstore *grid)
 				n++;
 			}
 			n = grid->start_x + grid->h * i;
-			if (n == grid->max_x || p == grid->max_y)
+			if (n > grid->max_x || p > grid->max_y)
 				break;
 			while (p < grid->start_x + grid->w * (j + 1))
 	//		while (p > grid->start_y + grid->start_y * (j - 1))
